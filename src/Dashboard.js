@@ -22,12 +22,10 @@ const url='https://money-manager-backend-srvr.herokuapp.com';
      
 
 
-      const setIncomeinfo = (data) => {
-          console.log(data);
+      const setIncomeinfo = (data) => {     
         setIncomeData(data)
       }
       const setExpenseinfo = (data) => {
-        console.log(data);
       setExpenseData(data)
     }
      
