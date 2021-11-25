@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import swal from 'sweetalert'
 
-const url='http://localhost:3001/income'
+const url='https://money-manager-backend-srvr.herokuapp.com'
 
 function Income() {
 

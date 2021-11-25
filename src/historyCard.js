@@ -4,7 +4,7 @@ import swal from 'sweetalert';
 import Modal from 'react-modal';
 import EditData from "./EditData";
 
-const url = 'http://localhost:3001';
+const url = 'https://money-manager-backend-srvr.herokuapp.com';
 
 
 function HistoryCard(props) {
@@ -71,7 +71,7 @@ function HistoryCard(props) {
             <div className='card history-content' style={{'background':'#ECEFF1'}}>
                 <div className='row' style={{ padding: '3%', 'padding-bottom':'0%'}}>
                                         <div  className='col'>
-                        <h2 style={{ 'color': `${props.color}` }}>{ props.symbol}{props.details.Amount.replace(/\B(?=(\d{3})+(?!\d))/g, ",") }</h2>
+                        <h2 style={{ 'color': `${props.color}` }}>Rs.{ props.symbol}{props.details.Amount.replace(/\B(?=(\d{3})+(?!\d))/g, ",") }</h2>
                                         </div>
                                         <div  className='col'>
                         <h4 style={{ color: 'brown' }}> Date: </h4>

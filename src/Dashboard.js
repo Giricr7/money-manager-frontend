@@ -4,7 +4,7 @@ import axios from 'axios'
 import HistoryCard from './historyCard'
 import { useState, useEffect } from 'react'
 import swal from 'sweetalert'
-const url='http://localhost:3001'
+const url='https://money-manager-backend-srvr.herokuapp.com'
     
   function Dashboard() {
 
@@ -289,16 +289,19 @@ const url='http://localhost:3001'
                             </div>
                    
 
-                    <div className='row history-container'>
-                    <div className='history-div'>
-                        <p className='history'>Income History</p>
+                        <div className='row history-container'>
+                            
+                           
+                             <div className='history-div'>
+                                 <p className='history'>Income History</p>
                                 <div className='inc-hist'>
                                 {                                       
                                         income_data.map((data) => {
-                                            return (<><HistoryCard details={data} color={'green'} symbol={'+'} /><br></br></>)
+                                            return (<><HistoryCard details={data} color={'green'} symbol={'+'} />
+                                                <br></br></>)
                                           })
                                 }
-                                        </div>
+                                </div>
                                
                                         
                                
@@ -317,7 +320,8 @@ const url='http://localhost:3001'
                                      
                                
                       
-                    </div>
+                            </div>
+                            
                     </div>
 
                     </div>

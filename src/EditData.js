@@ -2,7 +2,7 @@ import { Expenses,Income } from './custStyle'
 import axios from 'axios'
 import { useState } from 'react'
 import swal from 'sweetalert'
-const url = 'http://localhost:3001'
+const url = 'https://money-manager-backend-srvr.herokuapp.com'
 
 function EditData(props) {
 
