@@ -1,4 +1,4 @@
-import { Route, BrowserRouter,Switch} from 'react-router-dom'
+import { Route, HashRouter ,Switch} from 'react-router-dom'
 
 
 import Dashboard from './Dashboard'
@@ -12,7 +12,7 @@ function Routes() {
     
 
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Navbar />
             <Switch>
                 <Route path='/income' component={Income} exact></Route>
@@ -20,7 +20,7 @@ function Routes() {
                 <Route path='/' component={Home} exact></Route>
                 <Route path='/dashboard' component={Dashboard} exact></Route>
             </Switch>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 

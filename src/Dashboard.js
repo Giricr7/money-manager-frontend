@@ -4,7 +4,7 @@ import axios from 'axios'
 import HistoryCard from './historyCard'
 import { useState, useEffect } from 'react'
 import swal from 'sweetalert'
-const url='https://money-manager-backend-srvr.herokuapp.com'
+const url='https://money-manager-backend-srvr.herokuapp.com';
     
   function Dashboard() {
 
@@ -19,10 +19,17 @@ const url='https://money-manager-backend-srvr.herokuapp.com'
      const [filterIncomeType, setFilterIncomeType] = useState('Select');
      const [filterFromDate, setFilterFromDate] = useState('');
      const [filterToDate, setFilterToDate] = useState('');
-
-
-      
      
+
+
+      const setIncomeinfo = (data) => {
+          console.log(data);
+        setIncomeData(data)
+      }
+      const setExpenseinfo = (data) => {
+        console.log(data);
+      setExpenseData(data)
+    }
      
   
      useEffect(() =>
@@ -40,7 +47,6 @@ const url='https://money-manager-backend-srvr.herokuapp.com'
          })();
          
      }, [])
-      
       
 
      let filterData = (e) => {
@@ -300,7 +306,9 @@ const url='https://money-manager-backend-srvr.herokuapp.com'
                                 <div className='inc-hist'>
                                 {                                       
                                         income_data.map((data) => {
-                                            return (<><HistoryCard details={data} color={'green'} symbol={'+'} />
+                                            return (<><HistoryCard details={data} color={'green'} symbol={'+'}
+                                                 setIncome={setIncomeinfo}
+                                            />
                                                 <br></br></>)
                                           })
                                 }
@@ -315,12 +323,16 @@ const url='https://money-manager-backend-srvr.herokuapp.com'
                                 <div className='exp-hist'>
                                 {                                       
                                         expense_data.map((data) => {
-                                            return (<><HistoryCard
-                                                color={'red'}
-                                                symbol={'-'}
-                                                details={data}
-                                                functionType={{ setIncome: setIncomeData, setExpense: setExpenseData }}                                            
-                                            /><br></br></>)
+                                            return (
+                                                <>
+                                                <HistoryCard
+                                                        color={'red'}
+                                                        symbol={'-'}
+                                                        details={data}
+                                                        setExpense={setExpenseinfo}
+                                                />
+                                                    <br></br>
+                                                </>)
                                           })
                                 }
                                     

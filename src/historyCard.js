@@ -8,9 +8,8 @@ const url = 'https://money-manager-backend-srvr.herokuapp.com';
 
 
 function HistoryCard(props) {
-
+   
     const [modalIsOpen, setIsOpen] = useState(false);
-    
     function openModal() {
         setIsOpen(true);
       }
@@ -39,21 +38,25 @@ function HistoryCard(props) {
             dangerMode: true,
           })
           .then(async(willDelete) => {
-              if (willDelete) {
-                  if (!details.Division) {
-                      await axios.delete(`${url}/income_dashboard/${details._id}`);
-                      const income = await axios.get(`${url}/income`);
-                      props.functionType.setIncome(income.data.reverse());
+              try {
+                  if (willDelete) {
+                      if (!details.Division) {
+                            await axios.delete(`${url}/income_dashboard/${details._id}`);
+                            const income = await axios.get(`${url}/income`);
+                            props.setIncome(income.data.reverse());
                   } else {
-                      await axios.delete(`${url}/expense_dashboard/${details._id}`);
-                      const expense = await axios.get(`${url}/expense`);
-                      props.functionType.setExpense(expense.data.reverse());
+                            await axios.delete(`${url}/expense_dashboard/${details._id}`);
+                            const expense = await axios.get(`${url}/expense`);
+                            props.setExpense(expense.data.reverse());
                   }                  
                   swal("Done! Your data has been deleted!", {
                     icon: "success",
                   })
                   
-            } 
+                }
+           } catch (err) {
+               console.error(err)
+            }
           });
        
    }
@@ -108,7 +111,7 @@ function HistoryCard(props) {
             
                             <i className="bi bi-x-circle-fill close-btn" onClick={closeModal}></i>
                                <div className='Edit-modal'>
-                                <EditData details={props.details} modal_close={closeModal }/>
+                                <EditData details={props.details} modal_close={closeModal} setExpense={props.setExpense} setIncome={ props.setIncome }/>
                                 </div>
                                 
                         </Modal>

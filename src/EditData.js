@@ -2,7 +2,7 @@ import { Expenses,Income } from './custStyle'
 import axios from 'axios'
 import { useState } from 'react'
 import swal from 'sweetalert'
-const url = 'https://money-manager-backend-srvr.herokuapp.com'
+const url = 'https://money-manager-backend-srvr.herokuapp.com';
 
 function EditData(props) {
 
@@ -19,10 +19,12 @@ function EditData(props) {
         try {
             if (props.details.Division) {
                 if (Type !== '' && Amount !== '' && Description !== '' && Division !== '') {
-                const res = await axios.patch(`${url}/expense/${props.details._id}`, { Type, Amount, Description,Division, Day,Time});
-                if(res)
+                    const res = await axios.patch(`${url}/expense/${props.details._id}`, { Type, Amount, Description, Division, Day, Time });
+                    const expense = await axios.get(`${url}/expense`);
+                    props.setExpense(expense.data.reverse());
+                if(res && expense)
                     swal("Success!", "Data Updated Successfully!", "success").then(() => {
-                        window.location.reload(false);
+                        props.modal_close()
                     })
                          
             } else {
@@ -30,10 +32,12 @@ function EditData(props) {
                 }
             } else {
                 if (Type !== '' && Amount !== '' && Description !== '') {
-                    const res = await axios.patch(`${url}/income/${props.details._id}`, { Type, Amount, Description, Day,Time});
-                    if(res)
+                    const res = await axios.patch(`${url}/income/${props.details._id}`, { Type, Amount, Description, Day, Time });
+                    const income = await axios.get(`${url}/income`);
+                    props.setIncome(income.data.reverse());
+                    if(res && income)
                         swal("Success!", "Data Updated Successfully!", "success").then(() => {
-                            window.location.reload(false);
+                            props.modal_close()
                         })
                 } else {
                     swal("Error!","Fill the required fields", "warning");
@@ -41,7 +45,7 @@ function EditData(props) {
 
             }
             }catch (err) {
-            console.log('server error');
+            console.log(err);
         }
         
     }
