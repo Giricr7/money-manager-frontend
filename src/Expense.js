@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react'
 import swal from 'sweetalert'
-const url = 'https://money-manager-backend-srvr.herokuapp.com'
+const url = 'https://money-manager-backend-srvr.herokuapp.com/expense'
 
 function Expense() {
 
