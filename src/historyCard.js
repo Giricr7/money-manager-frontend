@@ -43,11 +43,11 @@ function HistoryCard(props) {
                   if (!details.Division) {
                       await axios.delete(`${url}/income_dashboard/${details._id}`);
                       const income = await axios.get(`${url}/income`);
-                      props.setIncome(income.data.reverse());
+                      props.functionType.setIncome(income.data.reverse());
                   } else {
                       await axios.delete(`${url}/expense_dashboard/${details._id}`);
                       const expense = await axios.get(`${url}/expense`);
-                      props.setExpense(expense.data.reverse());
+                      props.functionType.setExpense(expense.data.reverse());
                   }                  
                   swal("Done! Your data has been deleted!", {
                     icon: "success",
