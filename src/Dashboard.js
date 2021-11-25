@@ -30,10 +30,10 @@ const url='https://money-manager-backend-srvr.herokuapp.com'
          (async() => {
              const income = await axios.get(`${url}/income`);
              const expense = await axios.get(`${url}/expense`);
-             setIncomeData(income.data);
-             setExpenseData(expense.data);
-             setFetchedIncome(income.data);
-             setFetchedExpense(expense.data);
+             setIncomeData(income.data.reverse());
+             setExpenseData(expense.data.reverse());
+             setFetchedIncome(income.data.reverse());
+             setFetchedExpense(expense.data.reverse());
          })();
          
      }, [])
