@@ -315,7 +315,12 @@ const url='https://money-manager-backend-srvr.herokuapp.com'
                                 <div className='exp-hist'>
                                 {                                       
                                         expense_data.map((data) => {
-                                            return (<><HistoryCard color={'red'} symbol={'-'} details={data} /><br></br></>)
+                                            return (<><HistoryCard
+                                                color={'red'}
+                                                symbol={'-'}
+                                                details={data}
+                                                functionType={{ setIncome: setIncomeData, setExpense: setExpenseData }}                                            
+                                            /><br></br></>)
                                           })
                                 }
                                     

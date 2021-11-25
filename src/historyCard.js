@@ -28,13 +28,6 @@ function HistoryCard(props) {
           transform: 'translate(-50%, -50%)',
         },
     };
-
-//     function handleEdit() {
-       
-       
-
-
-//    }
     
     // deleting the data
     function handleDelete(details) {
@@ -49,14 +42,15 @@ function HistoryCard(props) {
               if (willDelete) {
                   if (!details.Division) {
                       await axios.delete(`${url}/income_dashboard/${details._id}`);
+                      const income = await axios.get(`${url}/income`);
+                      props.setIncome(income);
                   } else {
                       await axios.delete(`${url}/expense_dashboard/${details._id}`);
-                  }
-                  
+                      const expense = await axios.get(`${url}/expense`);
+                      props.setExpense(expense);
+                  }                  
                   swal("Done! Your data has been deleted!", {
                     icon: "success",
-                  }).then(() => {
-                    window.location.reload(false);
                   })
                   
             } 
