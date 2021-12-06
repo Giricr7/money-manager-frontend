@@ -1,5 +1,7 @@
 import { Expenses,Income } from './custStyle'
 import axios from 'axios'
+import { HashLoader } from "react-spinners"
+import { css } from "@emotion/react";
 import { useState } from 'react'
 import swal from 'sweetalert'
 const url = 'https://money-manager-backend-srvr.herokuapp.com';
@@ -12,22 +14,35 @@ function EditData(props) {
     var [Division, setDivision] = useState(props.details.Division);
     let Day = new Date().toLocaleDateString();
     let Time = new Date().toLocaleTimeString();
+    let [loading, setLoading] = useState(false);
     
+    const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+    direction:column;
+    justify-content:center;
+    align-items:center;
+  `;
 
     let updateData = async (e) => {
         e.preventDefault();
+        setLoading(true)
         try {
             if (props.details.Division) {
                 if (Type !== '' && Amount !== '' && Description !== '' && Division !== '') {
                     const res = await axios.patch(`${url}/expense/${props.details._id}`, { Type, Amount, Description, Division, Day, Time });
                     const expense = await axios.get(`${url}/expense`);
                     props.setExpense(expense.data.reverse());
-                if(res && expense)
-                    swal("Success!", "Data Updated Successfully!", "success").then(() => {
-                        props.modal_close()
-                    })
-                         
-            } else {
+                    if (res && expense) {
+                        setLoading(false)
+                        swal("Success!", "Data Updated Successfully!", "success").then(() => {
+                            props.modal_close()
+                        
+                        })
+                    }
+                } else {
+                    setLoading(false)
                 swal("Error!","Fill the required fields", "warning");
                 }
             } else {
@@ -35,11 +50,14 @@ function EditData(props) {
                     const res = await axios.patch(`${url}/income/${props.details._id}`, { Type, Amount, Description, Day, Time });
                     const income = await axios.get(`${url}/income`);
                     props.setIncome(income.data.reverse());
-                    if(res && income)
+                    if (res && income) {
+                        setLoading(false)
                         swal("Success!", "Data Updated Successfully!", "success").then(() => {
                             props.modal_close()
                         })
+                    }
                 } else {
+                    setLoading(false)
                     swal("Error!","Fill the required fields", "warning");
                     }
 
@@ -53,8 +71,8 @@ function EditData(props) {
     return (
         
         <>
-
-<div className="Edit-div">
+            {loading?<div className="App"> <HashLoader color={"blue"} loading={loading} css={override} size={60} /></div>:
+                <div className="Edit-div">
                 <h1>EDIT TRANSACTION</h1>
                 <hr></hr>
                 <div className="card expense-items">
@@ -129,6 +147,8 @@ function EditData(props) {
                 
 
           </div>  
+   
+}
 
 
         </>

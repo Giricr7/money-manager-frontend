@@ -299,7 +299,8 @@ const url='https://money-manager-backend-srvr.herokuapp.com';
                         <div className='row history-container'>
                             
                            
-                             <div className='history-div'>
+                            <div className='history-div'>
+                                
                                  <p className='history'>Income History</p>
                                 <div className='inc-hist'>
                                 {                                       
@@ -311,12 +312,12 @@ const url='https://money-manager-backend-srvr.herokuapp.com';
                                           })
                                 }
                                 </div>
-                               
-                                        
-                               
                       
                             </div>
+
                             <div className='history-div'>
+                                
+
                         <p className='history'>Expense History</p>
                                 <div className='exp-hist'>
                                 {                                       
@@ -337,7 +338,6 @@ const url='https://money-manager-backend-srvr.herokuapp.com';
                             </div>
                                      
                                
-                      
                             </div>
                             
                     </div>
