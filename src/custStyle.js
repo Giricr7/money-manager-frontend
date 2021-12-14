@@ -11,9 +11,9 @@ const CustomStyles = {
     },
 };
   
-const Expenses = ['Mortgage or rent', 'Property taxes', 'Car payment', 'Parking fees', 'Groceries', 'Restaurants', 'Electricity', 'Internet', 'Adults’ clothing',
-        'Children’s clothing', 'Primary care', 'Medications', 'Health insurance', 'Life insurance', 'Cleaning supplies', 'Laundry detergent', 'Haircuts', 'Cosmetics ', 'Movies', 'Christmas',
-        'Children’s college','Financial planning','Student loans','Credit cards']
+const Expenses = ['Mortgage or Rent', 'Property Taxes', 'Car Payment', 'Parking Fees', 'Groceries', 'Restaurants', 'Electricity', 'Internet', `Adult's Clothing`,
+        'Children’s Clothing', 'Primary Care', 'Medications', 'Health Insurance', 'Life Insurance', 'Cleaning Supplies', 'Laundry Detergent', 'Haircuts', 'Cosmetics ', 'Movies', 'Christmas',
+        'Children’s College','Financial Planning','Student Loans','Credit Cards']
 
 const Income = ['Monthly Income', 'Business Income'];
 

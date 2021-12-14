@@ -45,7 +45,7 @@ function Income() {
                 if (res) {
                     setLoading(false)
                     swal("Success!", "Data Added Successfully!", "success");
-                    resetData()
+                    resetData();
                     e.target.reset();
                 }
               
@@ -65,7 +65,7 @@ function Income() {
     
         <div >
             {
-               loading?<div className="App"> <RingLoader color={"blue"} loading={loading} css={override} size={60} /></div>:
+               loading ? <div className="App"> <RingLoader color={"blue"} loading={loading} css={override} size={60} /></div>:
 
                 <div className="income-div">
                     <h1>ADD NEW INCOME</h1>
